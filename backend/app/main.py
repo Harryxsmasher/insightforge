@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.core.logger import logger
 from app.modules.dataset.routes import router as dataset_router
+from app.modules.analysis.routes import (
+    router as analysis_router
+)
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -9,6 +12,7 @@ app = FastAPI(
 )
 
 app.include_router(dataset_router)
+app.include_router(analysis_router)
 
 @app.get("/")
 def root():

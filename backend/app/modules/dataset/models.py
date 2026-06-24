@@ -14,6 +14,10 @@ class Dataset(Base):
 
     filename: Mapped[str] = mapped_column(String(255))
 
+    file_path: Mapped[str] = mapped_column(
+    String(255)
+    )
+
     file_type: Mapped[str] = mapped_column(String(50))
 
     file_size: Mapped[int] = mapped_column(Integer)

@@ -1,5 +1,6 @@
 from pathlib import Path
-import shutil
+
+from fastapi import UploadFile
 
 
 class StorageEngine:
@@ -39,18 +40,20 @@ class StorageEngine:
 
     def save_file(
         self,
-        source_path: str,
-        filename: str
-    ):
+        upload_file: UploadFile
+    ) -> Path:
 
         destination = self.get_upload_path(
-            filename
+            upload_file.filename
         )
 
-        shutil.copy(
-            source_path,
-            destination
-        )
+        with destination.open(
+            "wb"
+        ) as buffer:
+
+            buffer.write(
+                upload_file.file.read()
+            )
 
         return destination
 

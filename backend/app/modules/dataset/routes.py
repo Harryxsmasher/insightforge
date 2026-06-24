@@ -7,6 +7,7 @@ from app.modules.dataset.schemas import (
     DatasetResponse
 )
 from app.modules.dataset.services import DatasetService
+from fastapi import UploadFile, File
 
 router = APIRouter(
     prefix="/datasets",
@@ -15,6 +16,20 @@ router = APIRouter(
 
 service = DatasetService()
 
+# @router.post("/upload")
+@router.post(
+    "/upload",
+    response_model=DatasetResponse
+)
+def upload_dataset(
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db)
+):
+
+    return service.upload_dataset(
+        db,
+        file
+    )
 
 @router.post(
     "/",
@@ -58,3 +73,4 @@ def get_dataset_by_id(
         db,
         dataset_id
     )
+

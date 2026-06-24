@@ -1,10 +1,12 @@
 from fastapi import FastAPI
+from app.core.config import settings
+from app.core.logger import logger
 
 app = FastAPI(
-    title="InsightForge",
-    version="0.1.0"
+    title=settings.APP_NAME,
+    version=settings.VERSION
 )
-
+logger.info("InsightForge application started")
 
 @app.get("/")
 def root():

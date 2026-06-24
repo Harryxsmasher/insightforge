@@ -1,18 +1,19 @@
 from fastapi import FastAPI
 from app.core.config import settings
 from app.core.logger import logger
+from app.modules.dataset.routes import router as dataset_router
 
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.VERSION
 )
-logger.info("InsightForge application started")
+
+app.include_router(dataset_router)
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to InsightForge"}
-
+    return {"message":"Welcome to InsightForge"}
 
 @app.get("/health")
 def health():
-    return {"status": "healthy"}
+    return {"status":"healthy"}

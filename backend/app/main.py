@@ -5,6 +5,7 @@ from app.modules.dataset.routes import router as dataset_router
 from app.modules.analysis.routes import (
     router as analysis_router
 )
+from app.modules.visualization.routes import router as visualization_router
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -13,6 +14,7 @@ app = FastAPI(
 
 app.include_router(dataset_router)
 app.include_router(analysis_router)
+app.include_router(visualization_router)
 
 @app.get("/")
 def root():

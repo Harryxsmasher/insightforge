@@ -19,4 +19,4 @@ class VisualizationEngine:
             x=column
         )
 
-        return figure.to_json()
+        return figure.to_dict()

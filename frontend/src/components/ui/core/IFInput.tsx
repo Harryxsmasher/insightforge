@@ -1,11 +1,22 @@
 import type { InputHTMLAttributes } from "react";
 
-type IFInputProps = InputHTMLAttributes<HTMLInputElement>;
+interface IFInputProps
+    extends InputHTMLAttributes<HTMLInputElement> {}
 
-export default function IFInput(props: IFInputProps) {
+export default function IFInput({
+
+    className = "",
+
+    ...props
+
+}: IFInputProps) {
+
     return (
+
         <input
-            className="
+
+            className={`
+
                 w-full
 
                 rounded-2xl
@@ -24,11 +35,21 @@ export default function IFInput(props: IFInputProps) {
 
                 outline-none
 
-                transition
+                transition-all
+                duration-300
 
                 focus:border-blue-500
-            "
+                focus:ring-2
+                focus:ring-blue-500/20
+
+                ${className}
+
+            `}
+
             {...props}
+
         />
+
     );
+
 }

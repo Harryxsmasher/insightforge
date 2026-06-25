@@ -3,16 +3,20 @@ export default function HeroDescription() {
         <p
             className="
                 mt-8
-                max-w-2xl
-                text-lg
-                md:text-xl
-                leading-8
+
+                max-w-3xl
+
+                text-xl
+
+                leading-9
+
                 text-slate-400
             "
         >
-            Analyze datasets, generate AI-powered insights,
-            visualize trends and create professional reports
-            from one intelligent workspace.
+            Upload your datasets, uncover hidden patterns,
+            generate AI-powered insights, visualize trends,
+            and export professional reports from one
+            intelligent workspace.
         </p>
     );
 }

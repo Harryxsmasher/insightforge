@@ -1,22 +1,14 @@
 import type { PropsWithChildren } from "react";
 
-interface IFSectionProps
-    extends PropsWithChildren {
-
+interface IFSectionProps extends PropsWithChildren {
     className?: string;
-
 }
 
 export default function IFSection({
-
     children,
-
-    className="",
-
-}: IFSectionProps){
-
-    return(
-
+    className = "",
+}: IFSectionProps) {
+    return (
         <section
             className={`
                 py-24
@@ -24,11 +16,7 @@ export default function IFSection({
                 ${className}
             `}
         >
-
             {children}
-
         </section>
-
     );
-
 }

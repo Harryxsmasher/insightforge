@@ -4,15 +4,20 @@ export default function HeroTitle() {
             className="
                 text-6xl
                 md:text-7xl
+                xl:text-8xl
+
                 font-extrabold
+
                 tracking-tight
-                leading-tight
+
+                leading-[0.95]
+
                 text-white
             "
         >
             Build Intelligence
             <br />
-            from Raw Data.
+            From Raw Data.
         </h1>
     );
 }

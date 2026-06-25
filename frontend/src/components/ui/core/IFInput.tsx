@@ -1,11 +1,13 @@
 import type { InputHTMLAttributes } from "react";
 
+import { cn } from "../../../lib/cn";
+
 interface IFInputProps
     extends InputHTMLAttributes<HTMLInputElement> {}
 
 export default function IFInput({
 
-    className = "",
+    className,
 
     ...props
 
@@ -15,8 +17,9 @@ export default function IFInput({
 
         <input
 
-            className={`
+            className={cn(
 
+                `
                 w-full
 
                 rounded-2xl
@@ -41,10 +44,11 @@ export default function IFInput({
                 focus:border-blue-500
                 focus:ring-2
                 focus:ring-blue-500/20
+                `,
 
-                ${className}
+                className
 
-            `}
+            )}
 
             {...props}
 

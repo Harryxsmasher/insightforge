@@ -1,16 +1,19 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, PropsWithChildren } from "react";
+
+import { cn } from "../../../lib/cn";
 
 type CardVariant =
-    | "default"
+    | "glass"
     | "outlined"
-    | "glass";
+    | "solid";
 
-interface IFCardProps extends HTMLAttributes<HTMLDivElement> {
+interface IFCardProps
+    extends HTMLAttributes<HTMLDivElement>,
+        PropsWithChildren {
+
     variant?: CardVariant;
 
     hover?: boolean;
-
-    children: ReactNode;
 }
 
 export default function IFCard({
@@ -19,7 +22,7 @@ export default function IFCard({
 
     hover = true,
 
-    className = "",
+    className,
 
     children,
 
@@ -29,10 +32,11 @@ export default function IFCard({
 
     const variants = {
 
-        default:
+        glass:
             `
-            bg-[#18181B]
+            bg-white/[0.04]
             border-white/10
+            backdrop-blur-xl
             `,
 
         outlined:
@@ -41,12 +45,11 @@ export default function IFCard({
             border-white/10
             `,
 
-        glass:
+        solid:
             `
-            bg-white/[0.04]
+            bg-[#18181B]
             border-white/10
-            backdrop-blur-xl
-            `,
+            `
 
     };
 
@@ -54,8 +57,9 @@ export default function IFCard({
 
         <div
 
-            className={`
+            className={cn(
 
+                `
                 rounded-3xl
 
                 border
@@ -67,21 +71,20 @@ export default function IFCard({
 
                 transition-all
                 duration-300
+                `,
 
-                ${hover
-                    ? `
-                        hover:-translate-y-1
-                        hover:border-blue-500/20
-                        hover:shadow-2xl
-                      `
-                    : ""
-                }
+                hover &&
+                `
+                hover:-translate-y-1
+                hover:border-blue-500/20
+                hover:shadow-2xl
+                `,
 
-                ${variants[variant]}
+                variants[variant],
 
-                ${className}
+                className
 
-            `}
+            )}
 
             {...props}
 

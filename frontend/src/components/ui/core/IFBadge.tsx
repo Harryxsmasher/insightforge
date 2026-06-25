@@ -1,4 +1,9 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type {
+    HTMLAttributes,
+    PropsWithChildren,
+} from "react";
+
+import { cn } from "../../../lib/cn";
 
 type BadgeVariant =
     | "primary"
@@ -7,16 +12,18 @@ type BadgeVariant =
     | "danger"
     | "neutral";
 
-interface IFBadgeProps extends HTMLAttributes<HTMLSpanElement> {
+interface IFBadgeProps
+    extends HTMLAttributes<HTMLSpanElement>,
+        PropsWithChildren {
+
     variant?: BadgeVariant;
-    children: ReactNode;
 }
 
 export default function IFBadge({
 
     variant = "primary",
 
-    className = "",
+    className,
 
     children,
 
@@ -42,9 +49,9 @@ export default function IFBadge({
 
         warning:
             `
-            border-amber-500/20
-            bg-amber-500/10
-            text-amber-300
+            border-yellow-500/20
+            bg-yellow-500/10
+            text-yellow-300
             `,
 
         danger:
@@ -60,15 +67,18 @@ export default function IFBadge({
             bg-white/5
             text-slate-300
             `
+
     };
 
     return (
 
         <span
 
-            className={`
+            className={cn(
 
+                `
                 inline-flex
+
                 items-center
                 justify-center
 
@@ -84,15 +94,13 @@ export default function IFBadge({
 
                 uppercase
                 tracking-wider
+                `,
 
-                transition-all
-                duration-300
+                variants[variant],
 
-                ${variants[variant]}
+                className
 
-                ${className}
-
-            `}
+            )}
 
             {...props}
 

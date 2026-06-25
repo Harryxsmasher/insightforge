@@ -1,28 +1,31 @@
 import { motion } from "framer-motion";
+import { LuArrowUpFromLine } from "react-icons/lu";
 
 import HeroTitle from "./HeroTitle";
 import HeroDescription from "./HeroDescription";
 
 import {
-    IFButton,
     IFBadge,
+    IFButton,
     IFContainer,
     IFSection,
 } from "../ui";
 
-import { LuUpload } from "react-icons/lu";
-
 export default function Hero() {
-
     return (
-
         <IFSection
             className="
                 relative
+
                 overflow-hidden
+
+                min-h-[calc(100vh-80px)]
+
+                flex
+
+                items-center
             "
         >
-
             {/* Blue Glow */}
 
             <div
@@ -52,8 +55,8 @@ export default function Hero() {
                 className="
                     absolute
 
-                    right-20
-                    top-32
+                    right-0
+                    top-20
 
                     h-[350px]
                     w-[350px]
@@ -67,23 +70,18 @@ export default function Hero() {
             />
 
             <IFContainer>
-
                 <motion.div
-
                     initial={{
-                        opacity:0,
-                        y:40
+                        opacity: 0,
+                        y: 40,
                     }}
-
                     animate={{
-                        opacity:1,
-                        y:0
+                        opacity: 1,
+                        y: 0,
                     }}
-
                     transition={{
-                        duration:.8
+                        duration: 0.8,
                     }}
-
                     className="
                         relative
                         z-10
@@ -95,25 +93,21 @@ export default function Hero() {
 
                         text-center
                     "
-
                 >
-
                     <p
                         className="
                             mb-6
+
+                            text-sm
 
                             uppercase
 
                             tracking-[0.35em]
 
-                            text-sm
-
                             text-blue-400
                         "
                     >
-
                         InsightForge
-
                     </p>
 
                     <HeroTitle />
@@ -125,11 +119,9 @@ export default function Hero() {
                             mt-12
                         "
                     >
-
-                        <LuUpload size={18}/>
+                        <LuArrowUpFromLine size={22} />
 
                         Upload Dataset
-
                     </IFButton>
 
                     <div
@@ -137,7 +129,6 @@ export default function Hero() {
                             mt-10
 
                             flex
-
                             flex-wrap
 
                             justify-center
@@ -145,41 +136,26 @@ export default function Hero() {
                             gap-3
                         "
                     >
-
                         <IFBadge>
-
                             CSV
-
                         </IFBadge>
 
                         <IFBadge>
-
                             Excel
-
                         </IFBadge>
 
                         <IFBadge>
-
                             JSON
-
                         </IFBadge>
 
                         <IFBadge
                             variant="success"
                         >
-
-                            AI Powered
-
+                            AI Insights
                         </IFBadge>
-
                     </div>
-
                 </motion.div>
-
             </IFContainer>
-
         </IFSection>
-
     );
-
 }

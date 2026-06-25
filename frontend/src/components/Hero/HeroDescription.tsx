@@ -6,7 +6,8 @@ export default function HeroDescription() {
 
                 max-w-3xl
 
-                text-xl
+                text-lg
+                md:text-xl
 
                 leading-9
 

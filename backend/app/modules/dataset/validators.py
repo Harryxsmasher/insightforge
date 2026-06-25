@@ -23,4 +23,4 @@ class DatasetValidator:
 
         if extension not in cls.ALLOWED_EXTENSIONS:
 
-            raise InvalidFileTypeException()
+            raise InvalidFileTypeException() 

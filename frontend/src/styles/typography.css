@@ -1,0 +1,57 @@
+/* =====================================================
+   InsightForge Typography System
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+
+    --font-primary: "Geist", "Inter", "Segoe UI", sans-serif;
+
+}
+
+/* Base Typography */
+
+body{
+
+    font-family:var(--font-primary);
+
+    font-weight:400;
+
+    letter-spacing:-0.01em;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+/* Headings */
+
+h1{
+
+    font-weight:800;
+
+    letter-spacing:-0.05em;
+
+}
+
+h2{
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-weight:600;
+
+}
+
+/* Paragraphs */
+
+p{
+
+    line-height:1.75;
+
+}

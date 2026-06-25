@@ -1,32 +1,96 @@
-import type { PropsWithChildren } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
+
+type CardVariant =
+    | "default"
+    | "outlined"
+    | "glass";
+
+interface IFCardProps extends HTMLAttributes<HTMLDivElement> {
+    variant?: CardVariant;
+
+    hover?: boolean;
+
+    children: ReactNode;
+}
 
 export default function IFCard({
+
+    variant = "glass",
+
+    hover = true,
+
+    className = "",
+
     children,
-}: PropsWithChildren) {
+
+    ...props
+
+}: IFCardProps) {
+
+    const variants = {
+
+        default:
+            `
+            bg-[#18181B]
+            border-white/10
+            `,
+
+        outlined:
+            `
+            bg-transparent
+            border-white/10
+            `,
+
+        glass:
+            `
+            bg-white/[0.04]
+            border-white/10
+            backdrop-blur-xl
+            `,
+
+    };
+
     return (
+
         <div
-            className="
+
+            className={`
+
                 rounded-3xl
 
                 border
-                border-white/10
-
-                bg-white/5
-
-                backdrop-blur-xl
-
-                shadow-xl
 
                 p-8
+
+                shadow-xl
+                shadow-black/20
 
                 transition-all
                 duration-300
 
-                hover:border-blue-500/20
-                hover:bg-white/[0.06]
-            "
+                ${hover
+                    ? `
+                        hover:-translate-y-1
+                        hover:border-blue-500/20
+                        hover:shadow-2xl
+                      `
+                    : ""
+                }
+
+                ${variants[variant]}
+
+                ${className}
+
+            `}
+
+            {...props}
+
         >
+
             {children}
+
         </div>
+
     );
+
 }
